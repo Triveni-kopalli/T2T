@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash2Treasuse</title>
+    <!-- Font Awesome CDN for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6f7ff; /* Light blue background */
+            color: #333;
+        }
+
+        header {
+            background-color: #008CBA; /* Bright blue for the header */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            background-image: url('https://example.com/your-image.jpg'); /* Replace with a relevant background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        header img {
+            height: 60px;
+            vertical-align: middle;
+        }
+
+        header h1 {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 2.5rem; /* Larger title */
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background: #343a40; /* Dark background for navigation */
+            padding: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1.1rem; /* Larger font size for better readability */
+        }
+
+        nav a:hover {
+            background: #5a6268;
+        }
+
+        section {
+            padding: 2rem;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 2rem;
+            margin: 1.5rem auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+            font-size: 2rem; /* Increased heading size */
+            color: #008CBA;
+        }
+
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+            font-weight: bold;
+            font-size: 1.2rem; /* Larger label size */
+        }
+
+        input, button {
+            width: 100%;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 1.2rem; /* Larger input and button font size */
+        }
+
+        button {
+            background: #036789;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #7ad7f1;
+        }
+
+        .btn-category {
+            background-color: #1bd3e0; /* Green buttons */
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1.4rem;
+            cursor: pointer;
+            border-radius: 6px;
+            width: 100%;
+            margin: 1rem 0;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        /* Updated Button Styles */
+        .btn-recycle {
+            background-color: #34c756; /* Green for recycle */
+            color: white;
+        }
+
+        .btn-recycle:hover {
+            background-color: #36b730; /* Darker green on hover */
+        }
+
+        .btn-buy {
+            background-color: #d99425; /* Orange for buying items */
+            color: white;
+        }
+
+        .btn-buy:hover {
+            background-color: #e67e22; /* Darker orange on hover */
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .icon {
+            font-size: 60px; /* Larger icons */
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .dashboard .circle {
+            width: 220px;
+            height: 220px;
+            font-size: 3.5rem;
+            margin: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .circle.recycled { 
+            background-color: #28a745; /* Green for recycled */
+        }
+
+        .circle.sold { 
+            background-color: #c73443; /* Red for sold */
+        }
+
+        .dashboard .circle span {
+            font-size: 2.5rem;
+        }
+
+        .dashboard .circle p {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                margin-bottom: 0.75rem;
+                font-size: 1.2rem; /* Larger font on mobile */
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Trash 2 Treasure</h1>
+        <p>Reduce waste, recycle products, and promote sustainability</p>
+    </header>
+
+    <nav aria-label="Main Navigation">
+        <a href="#sign-login" onclick="navigateTo('sign-login')"><i class="fas fa-user-plus"></i> Sign Up/Login</a>
+        <a href="#main-options" onclick="navigateTo('main-options')"><i class="fas fa-cogs"></i> Main Options</a>
+        <a href="#dashboard" onclick="navigateTo('dashboard')"><i class="fas fa-chart-pie"></i> Analytics</a>
+    </nav>
+
+    <main>
+        <!-- Sign-Up / Login Section -->
+        <section id="sign-login" class="center">
+            <div class="form-container">
+                <h2>Sign Up/Login</h2>
+                <form>
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Main Options Section -->
+        <section id="main-options" class="center">
+            <div class="card">
+                <h2>Select an Option</h2>
+                <div class="center">
+                    <button class="btn-category btn-recycle" onclick="navigateTo('recycle-options')">
+                        <i class="fas fa-sync-alt"></i> Recycle Items
+                    </button>
+                    <button class="btn-category btn-buy" onclick="navigateTo('buy-options')">
+                        <i class="fas fa-shopping-cart"></i> Buy Items
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recycle Options -->
+        <section id="recycle-options" class="hidden center">
+            <div class="card">
+                <h2>Recycle Your Items</h2>
+                <button class="btn-category" onclick="navigateTo('categories')">
+                    <i class="fas fa-box-open"></i> Choose Category
+                </button>
+                <button class="btn-category" onclick="navigateTo('pickup-dropoff')">
+                    <i class="fas fa-map-marker-alt"></i> Pickup/Drop-off Locations
+                </button>
+                <button class="btn-category" onclick="navigateTo('price-estimation')">
+                    <i class="fas fa-dollar-sign"></i> Price Estimation
+                </button>
+            </div>
+        </section>
+
+        <!-- Categories for Recycle -->
+        <section id="categories" class="hidden">
+            <div class="card">
+                <h2>Categories</h2>
+                <button class="btn-category"><i class="fas fa-tshirt"></i> Clothing</button>
+                <button class="btn-category"><i class="fas fa-gamepad"></i> Toys</button>
+                <button class="btn-category"><i class="fas fa-laptop"></i> Electronics</button>
+                <button class="btn-category"><i class="fas fa-couch"></i> Furniture</button>
+            </div>
+        </section>
+
+        <!-- Pickup/Drop-off Locations -->
+        <section id="pickup-dropoff" class="hidden">
+            <div class="card">
+                <h2>Pickup and Drop-off Locations</h2>
+                <p>Select your preferred option for recycling.</p>
+                <button class="btn-category">Find Pickup Locations</button>
+                <button class="btn-category">Drop-off Locations</button>
+            </div>
+        </section>
+
+        <!-- Price Estimation -->
+        <section id="price-estimation" class="hidden">
+            <div class="card">
+                <h2>Price Estimation</h2>
+                <label for="product-condition">Condition of Product:</label>
+                <select id="product-condition">
+                    <option value="good">Good</option>
+                    <option value="average">Average</option>
+                    <option value="poor">Poor</option>
+                </select>
+                <button class="btn-category">Get Estimation</button>
+            </div>
+        </section>
+
+        <!-- Buy Options -->
+        <section id="buy-options" class="hidden">
+            <div class="card">
+                <h2>Buy Items</h2>
+                <button class="btn-category" onclick="navigateTo('categories-buy')">Choose Category</button>
+            </div>
+        </section>
+
+        <!-- Categories for Buying -->
+        <section id="categories-buy" class="hidden">
+            <div class="card">
+                <h2>Categories</h2>
+                <button class="btn-category"><i class="fas fa-tshirt"></i> Clothing</button>
+                <button class="btn-category"><i class="fas fa-gamepad"></i> Toys</button>
+                <button class="btn-category"><i class="fas fa-laptop"></i> Electronics</button>
+                <button class="btn-category"><i class="fas fa-couch"></i> Furniture</button>
+            </div>
+        </section>
+
+        <!-- Analytical Dashboard -->
+        <section id="dashboard" class="hidden">
+            <div class="dashboard">
+                <div class="circle recycled">
+                    <span><i class="fas fa-recycle"></i> 80%</span>
+                    <p>Recycled</p>
+                </div>
+                <div class="circle sold">
+                    <span><i class="fas fa-store"></i> 70%</span>
+                    <p>Sold</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Trash 2 Treasure | Designed for a sustainable future</p>
+    </footer>
+
+    <script>
+        function navigateTo(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.add('hidden'));
+
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.classList.remove('hidden');
+        }
+
+        // Show the first section by default (Sign-up/Login)
+        navigateTo('sign-login');
+    </script>
+</body>
+</html>
